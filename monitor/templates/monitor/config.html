@@ -1,0 +1,174 @@
+{% extends "monitor/base.html" %}
+
+{% block javascript %}
+
+    <script language='javascript'>
+
+        var ip = "{{ ip }}";
+        var port = {{ port }};
+        var configFileId = {{ cur_config_file.id }};
+
+        function call(action, param) {
+            $.ajax({
+                type: "GET",
+                url: "{% url 'config_admin' %}",
+                data: {config_file_id: configFileId, action: action, param: param}
+            }).done(function(msg) {
+                $('#tip').html(msg).show();
+            });
+        }
+
+        function configSync() {
+            $.ajax({
+                type: "GET",
+                url: "{% url 'config_sync' %}",
+                data: {config_file_id: configFileId}
+            }).done(function(msg) {
+                $('#tip').html(msg).show();
+            });
+        }
+
+        function configReload() {
+            $.ajax({
+                type: "GET",
+                url: "{% url 'config_reload' %}",
+                data: {ip: ip, port: port}
+            }).done(function(msg) {
+                $('#tip').html(msg).show();
+            });
+        }
+
+        function addConfig(formId) {
+            call('add', JSON.stringify(getFormData(formId)));
+        }
+
+        function updateConfig(formId) {
+            call('update', JSON.stringify(getFormData(formId)));
+        }
+
+        function deleteConfig(formId) {
+            if(confirm("确定要删除吗？")) {
+                call('delete', JSON.stringify(getFormData(formId)));
+            }
+        }
+
+        function getFormData(formId) {
+            var data = {};
+
+            $.each($('#' + formId).serializeArray(), function(i, field) {
+                if (typeof(field.name) !== "undefined") {
+                    data[field.name] = field.value;
+                }
+            });
+
+            return data;
+        }
+
+        function selectConfigFile(configFielId) {
+            location.href =
+                    "?ip=" + ip +
+                    "&port=" + port +
+                    "&config_file_id=" + configFielId;
+        }
+
+    </script>
+
+{% endblock %}
+
+{% block main %}
+
+    <div id="config-main">
+
+        <div id="top" class="alert {% if cur_config_file.is_modified %}alert-danger{% else %}alert-success{% endif %}">
+            地址: {{ ip }} &nbsp; | &nbsp;
+            端口: {{ port }} &nbsp; | &nbsp;
+            <a href="#config-add">添加配置</a> &nbsp; | &nbsp;
+            <a href="#" onclick="configSync()">同步配置</a> &nbsp; | &nbsp;
+            <a href="#" onclick="configReload()">重载配置</a>
+            {% if cur_config_file.is_modified %} &nbsp; | &nbsp; 配置未同步{% endif %}
+        </div>
+
+        <label style="margin-bottom: 20px; width: 100%;">
+            <select onchange="selectConfigFile(this.options[this.options.selectedIndex].value)" class="form-control">
+                {% for config_file in config_files %}
+                    <option value="{{ config_file.id }}" {% if config_file == cur_config_file %}selected="selected"{% endif %}>
+                        {{ config_file.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </label>
+
+        {% load tags %}
+
+        {% for section in config_sections %}
+
+            <form id="section-{{ section.id }}" method="post" onsubmit="return false;">
+
+                <input type="hidden" name="section_id" value="{{ section.id }}" />
+
+                <table class="table table-bordered" >
+
+                    <tr>
+                        <th>程序名</th>
+                        <td><input type="text" class="form-control" name="section_name" value="{{ section.name }}" placeholder="" /></td>
+                    </tr>
+
+                    {% for key, val in section.values %}
+                        <tr>
+                            <th>{{ key|get_key_alias }}</th>
+                            <td><input type="text" class="form-control" name="{{ key }}" value="{{ val }}" placeholder="" /></td>
+                        </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <th>操作</th>
+                        <td>
+                            <button onclick="updateConfig('section-{{ section.id }}')" class="btn btn-sm btn-success">修改</button>&nbsp;
+                            <button onclick="deleteConfig('section-{{ section.id }}')" class="btn btn-sm btn-danger">删除</button>
+                        </td>
+                    </tr>
+
+                </table>
+            </form>
+
+        {% endfor %}
+
+        <div class="alert alert-success">
+            添加配置: {{ ip }}:{{ port }} &nbsp; <a href="#top">返回顶部</a>
+        </div>
+
+        <form id="config-add" method="post" onsubmit="addConfig('config-add'); return false;">
+
+            <table class="table table-bordered" >
+
+                <tr>
+                    <th>程序名</th>
+                    <td><input type="text" class="form-control" name="section_name" placeholder="" /></td>
+                </tr>
+
+                {% for section in section_values %}
+                    <tr>
+                        <th>{{ section.key_alias }}</th>
+                        <td>
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    name="{{ section.key }}"
+                                    value="{% if section.value %}{{ section.value }}{% else %}{{ section.default }}{% endif %}"
+                                    placeholder="" />
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                <tr>
+                    <th>操作</th>
+                    <td><button type="submit" class="btn btn-sm btn-success">添加</button></td>
+                </tr>
+
+            </table>
+
+        </form>
+
+    </div>
+
+{% endblock %}
