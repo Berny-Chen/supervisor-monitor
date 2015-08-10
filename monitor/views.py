@@ -252,6 +252,6 @@ def config_reload(request):
         server.password,
     )
 
-    output = os.popen('%s && %s' % (cd_cmd, fab_cmd)).read()
+    output = os.popen('%s && %s 2>&1' % (cd_cmd, fab_cmd)).read()
 
     return HttpResponse(output.replace('\n', '<br />'))
