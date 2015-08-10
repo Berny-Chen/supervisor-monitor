@@ -155,4 +155,4 @@ class SupervisorSectionValue(models.Model):
     class Meta:
         verbose_name = 'Supervisor Section Value'
         verbose_name_plural = 'Supervisor Section Values'
-        ordering = ['index']
+        ordering = ['-display', 'index']
