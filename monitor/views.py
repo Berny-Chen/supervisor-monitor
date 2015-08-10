@@ -188,7 +188,7 @@ def config_admin(request):
 
     # update config file
     config_file = SupervisorConfigFile.objects.get(id=config_file_id)
-    config_file.is_modified = True
+    config_file.modified = True
     config_file.last_modified = timezone.now()
     config_file.save()
 
@@ -227,7 +227,7 @@ def config_sync(request):
 
     # update config file
     if output.strip() == success_str:
-        config_file.is_modified = False
+        config_file.modified = False
         config_file.sync_time = timezone.now()
         config_file.save()
 

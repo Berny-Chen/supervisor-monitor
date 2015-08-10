@@ -42,7 +42,7 @@ class SupervisorConfigFile(models.Model):
     server = models.ForeignKey(SupervisorServer)
     name = models.CharField(max_length=100)
     path = models.CharField(max_length=300)
-    is_modified = models.BooleanField(default=False, db_index=True)
+    modified = models.BooleanField(default=False, db_index=True)
     last_modified = models.DateTimeField(blank=True, null=True)
     sync_time = models.DateTimeField(blank=True, null=True)
     index = models.IntegerField(db_index=True)

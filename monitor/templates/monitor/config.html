@@ -79,13 +79,13 @@
 
     <div id="config-main">
 
-        <div id="top" class="alert {% if cur_config_file.is_modified %}alert-danger{% else %}alert-success{% endif %}">
+        <div id="top" class="alert {% if cur_config_file.modified %}alert-danger{% else %}alert-success{% endif %}">
             地址: {{ ip }} &nbsp; | &nbsp;
             端口: {{ port }} &nbsp; | &nbsp;
             <a href="#config-add">添加配置</a> &nbsp; | &nbsp;
             <a href="#" onclick="configSync()">同步配置</a> &nbsp; | &nbsp;
             <a href="#" onclick="configReload()">重载配置</a>
-            {% if cur_config_file.is_modified %} &nbsp; | &nbsp; 配置未同步{% endif %}
+            {% if cur_config_file.modified %} &nbsp; | &nbsp; 配置未同步{% endif %}
         </div>
 
         <label style="margin-bottom: 20px; width: 100%;">

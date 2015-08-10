@@ -6,7 +6,7 @@ from .models import *
 
 class SupervisorConfigFileInline(admin.TabularInline):
     model = SupervisorConfigFile
-    fields = ('path', 'name', 'index', 'is_modified')
+    fields = ('path', 'name', 'index', 'modified')
     extra = 1
 
 
@@ -35,10 +35,10 @@ class SupervisorConfigSectionInline(admin.TabularInline):
 class SupervisorConfigFileAdmin(admin.ModelAdmin):
     list_display = (
         'path', 'server', 'name', 'last_modified',
-        'sync_time', 'is_modified', 'index'
+        'sync_time', 'modified', 'index'
     )
 
-    fields = ('path', 'server', 'name', 'index', 'is_modified')
+    fields = ('path', 'server', 'name', 'index', 'modified')
     inlines = [SupervisorConfigSectionInline]
 
 
