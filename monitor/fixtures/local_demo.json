@@ -1,0 +1,27 @@
+[
+  {
+    "model": "monitor.SupervisorServerGroup",
+    "fields": {
+      "name": "本地",
+      "index": 1
+    }
+  },
+  {
+    "model": "monitor.SupervisorServer",
+    "fields": {
+      "ip": "127.0.0.1",
+      "port": "9001",
+      "group": 1,
+      "index": 1
+    }
+  },
+  {
+    "model": "monitor.SupervisorConfigFile",
+    "fields": {
+      "server": 1,
+      "name": "default",
+      "path": "/your/config/file/path",
+      "index": 1
+    }
+  }
+]

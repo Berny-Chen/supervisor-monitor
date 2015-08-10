@@ -1,0 +1,332 @@
+[
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "command",
+      "key_alias": "命令",
+      "value": "",
+      "default": "",
+      "display": true,
+      "index": 1
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "process_name",
+      "key_alias": "进程名",
+      "value": "",
+      "default": "%(program_name)s",
+      "display": true,
+      "index": 2
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "numprocs",
+      "key_alias": "进程数",
+      "value": "",
+      "default": 1,
+      "display": true,
+      "index": 3
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "numprocs_start",
+      "key_alias": "进程起始下标",
+      "value": "",
+      "default": 0,
+      "display": true,
+      "index": 4
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "priority",
+      "key_alias": "优先级",
+      "value": "",
+      "default": 999,
+      "display": false,
+      "index": 5
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "autostart",
+      "key_alias": "自动启动",
+      "value": "",
+      "default": true,
+      "display": false,
+      "index": 6
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "autorestart",
+      "key_alias": "自动重启",
+      "value": "",
+      "default": "unexpected",
+      "display": false,
+      "index": 7
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "startsecs",
+      "key_alias": "视为启动成功的秒数",
+      "value": "",
+      "default": 1,
+      "display": false,
+      "index": 8
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "startretries",
+      "key_alias": "启动重试次数",
+      "value": "",
+      "default": 3,
+      "display": false,
+      "index": 9
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "exitcodes",
+      "key_alias": "退出返回码",
+      "value": "",
+      "default": "0,2",
+      "display": false,
+      "index": 10
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "stopsignal",
+      "key_alias": "停止信号",
+      "value": "",
+      "default": "TERM",
+      "display": false,
+      "index": 11
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "stopwaitsecs",
+      "key_alias": "停止等待秒数",
+      "value": "",
+      "default": 10,
+      "display": false,
+      "index": 12
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "stopasgroup",
+      "key_alias": "以组的形式停止",
+      "value": "",
+      "default": false,
+      "display": false,
+      "index": 13
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "killasgroup",
+      "key_alias": "以组的形式终止",
+      "value": "",
+      "default": false,
+      "display": false,
+      "index": 14
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "user",
+      "key_alias": "用户",
+      "value": "",
+      "default": "",
+      "display": false,
+      "index": 15
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "redirect_stderr",
+      "key_alias": "错误重定向",
+      "value": true,
+      "default": false,
+      "display": true,
+      "index": 16
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "stdout_logfile",
+      "key_alias": "标准输出日志",
+      "value": "",
+      "default": "AUTO",
+      "display": false,
+      "index": 17
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "stdout_logfile_maxbytes",
+      "key_alias": "标准输出日志最大字节数",
+      "value": "1MB",
+      "default": "50MB",
+      "display": true,
+      "index": 18
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "stdout_logfile_backups",
+      "key_alias": "标准输出日志备份",
+      "value": 0,
+      "default": 10,
+      "display": true,
+      "index": 19
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "stdout_capture_maxbytes",
+      "key_alias": "Stdout Capture Maxbytes",
+      "value": "",
+      "default": 0,
+      "display": false,
+      "index": 20
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "stdout_events_enabled",
+      "key_alias": "Stdout Events Enabled",
+      "value": "",
+      "default": 0,
+      "display": false,
+      "index": 21
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "stderr_logfile",
+      "key_alias": "错误日志",
+      "value": "",
+      "default": "AUTO",
+      "display": false,
+      "index": 22
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "stderr_logfile_maxbytes",
+      "key_alias": "错误日志最大字节数",
+      "value": "",
+      "default": "50MB",
+      "display": false,
+      "index": 23
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "stderr_logfile_backups",
+      "key_alias": "错误日志备份",
+      "value": "",
+      "default": 10,
+      "display": false,
+      "index": 24
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "stderr_capture_maxbytes",
+      "key_alias": "Stderr Capture Maxbytes",
+      "value": "",
+      "default": 0,
+      "display": false,
+      "index": 25
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "stderr_events_enabled",
+      "key_alias": "Stderr Events Enabled",
+      "value": "",
+      "default": false,
+      "display": false,
+      "index": 26
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "environment",
+      "key_alias": "环境变量",
+      "value": "",
+      "default": "",
+      "display": false,
+      "index": 27
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "directory",
+      "key_alias": "基目录",
+      "value": "",
+      "default": "",
+      "display": false,
+      "index": 28
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "umask",
+      "key_alias": "UMask",
+      "value": "",
+      "default": "",
+      "display": false,
+      "index": 29
+    }
+  },
+  {
+    "model": "monitor.SupervisorSectionValue",
+    "fields": {
+      "key": "serverurl",
+      "key_alias": "Server Url",
+      "value": "",
+      "default": "AUTO",
+      "display": false,
+      "index": 30
+    }
+  }
+]
