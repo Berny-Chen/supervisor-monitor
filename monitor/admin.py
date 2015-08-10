@@ -48,10 +48,10 @@ class SupervisorConfigSectionAdmin(admin.ModelAdmin):
 
 class SupervisorSectionValueAdmin(admin.ModelAdmin):
     list_display = (
-        'key', 'key_alias', 'value', 'default', 'index', 'is_display',
+        'key', 'key_alias', 'value', 'default', 'index', 'display',
     )
 
-    fields = ('key', 'key_alias', 'value', 'default', 'index', 'is_display',)
+    fields = ('key', 'key_alias', 'value', 'default', 'index', 'display',)
 
 
 admin.site.register(SupervisorServer, SupervisorServerAdmin)

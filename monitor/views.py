@@ -138,7 +138,7 @@ def config(request):
         ).items()
 
     # get section values settings
-    section_values = SupervisorSectionValue.objects.filter(is_display=True)
+    section_values = SupervisorSectionValue.objects.filter(display=True)
 
     context = {
         'cur_config_file': cur_config_file,

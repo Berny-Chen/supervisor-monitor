@@ -146,7 +146,7 @@ class SupervisorSectionValue(models.Model):
     key_alias = models.CharField(max_length=100, unique=True)
     value = models.CharField(max_length=100, blank=True, default='')
     default = models.CharField(max_length=100, blank=True, default='')
-    is_display = models.BooleanField(default=False)
+    display = models.BooleanField(default=False)
     index = models.IntegerField(db_index=True)
 
     def __unicode__(self):
