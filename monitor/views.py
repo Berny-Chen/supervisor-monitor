@@ -57,7 +57,11 @@ def index_render(request, ip, port, context=None):
         server.password,
     )
 
-    all_process_info = supervisor.call('getAllProcessInfo')
+    try:
+        all_process_info = supervisor.call('getAllProcessInfo')
+    except:
+        all_process_info = []
+        
     all_process = {process['group']: [] for process in all_process_info}
 
     # get warning(not running) process info
